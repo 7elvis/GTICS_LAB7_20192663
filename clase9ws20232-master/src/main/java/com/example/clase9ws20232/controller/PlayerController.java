@@ -37,7 +37,7 @@ public class PlayerController {
 
     @PostMapping("/agregar")
     public Player addPlayer(@RequestBody Player player) {
-        return playerRepository.saveAndRecalculatePositions(player);
+        return playerRepository.reclacular(player);
     }
 }
 

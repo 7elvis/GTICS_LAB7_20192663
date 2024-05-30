@@ -26,7 +26,7 @@ public interface PlayerRepository extends JpaRepository<Player, Integer> {
     @Query(value = "UPDATE players SET position = position + 1 WHERE mmr > ?1", nativeQuery = true)
     void updatePositions(BigInteger mmr);
 
-    default Player saveAndRecalculatePositions(Player player) {
+    default Player reclacular(Player player) {
         insertPlayer(player.getName(), player.getMmr(), player.getRegion());
         updatePositions(player.getMmr());
         return player;
